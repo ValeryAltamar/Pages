@@ -227,16 +227,16 @@
     <script>
         // DATA SET ORIGINAL PRESERVADO
         const ASSET_PIPELINE = [
-            { title: "DIA DE SUERTE", img: "1.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "EXITACION", img: "2.jpg", user: "VALERY", avatar: "1.JPG" },
-            { title: "VANGUARDIA PURA", img: "3.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "LUZ & PRESENCIA", img: "4.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "DIA SENSUAL", img: "5.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "DIA PRIVADO", img: "6.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "LUJURIA", img: "7.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "MAXIMA SEXUALIDAD", img: "8.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "MAXIMA SEXUALIDAD", img: "9.JPG", user: "VALERY", avatar: "1.JPG" },
-            { title: "DIA PRIVADO", img: "10.jpg", user: "VALERY", avatar: "1.JPG" },
+            { title: "DIA DE SUERTE", img: "1.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "EXITACION", img: "2.jpg", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "VANGUARDIA PURA", img: "3.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "LUZ & PRESENCIA", img: "4.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "DIA SENSUAL", img: "5.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "DIA PRIVADO", img: "6.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "LUJURIA", img: "7.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "MAXIMA SEXUALIDAD", img: "8.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "MAXIMA SEXUALIDAD", img: "9.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "DIA PRIVADO", img: "10.jpg", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
 
         ];
 
@@ -290,8 +290,14 @@
                     </div>
                 </div>
             `;
-            return card;
-        }
+            card.style.cursor = "pointer";
+
+    card.addEventListener("click", () => {
+        window.location.href = data.url;
+    });
+
+    return card;
+}
 
         function renderCard(index) {
             container.innerHTML = "";
