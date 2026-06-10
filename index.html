@@ -185,6 +185,73 @@
             30% { opacity: 0.3; }
             100% { transform: scale(1) rotateY(0deg) translateZ(0); opacity: 1; filter: blur(0px); }
         }
+
+
+        /* ==========================================
+   FULLSCREEN IMAGE VIEWER
+========================================== */
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all .35s ease;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-modal img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+
+    transform: scale(.9);
+    transition: transform .35s ease;
+}
+
+.image-modal.active img {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.1);
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.close-modal:hover {
+    background: rgba(255,255,255,.2);
+}
+        
     </style>
 </head>
 <body>
@@ -249,6 +316,18 @@
             initParticleBackground();
             buildPagination();
             renderCard(currentIndex);
+
+            document.getElementById("closeModal")
+    .addEventListener("click", closeImageModal);
+
+document.getElementById("imageModal")
+    .addEventListener("click", (e) => {
+
+        if (e.target.id === "imageModal") {
+            closeImageModal();
+        }
+
+});
             
             // Ciclo infinito automatizado cada 5 segundos
             setInterval(nextCardSequence, 3000);
@@ -294,8 +373,8 @@
             card.style.cursor = "pointer";
 
     card.addEventListener("click", () => {
-        window.location.href = data.url;
-    });
+    openImageModal(data.img);
+});
 
     return card;
 }
@@ -338,6 +417,21 @@
             }, 850);
         }
 
+
+        function openImageModal(imageSrc) {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+    modalImage.src = imageSrc;
+    modal.classList.add("active");
+}
+
+      function closeImageModal() {
+       document.getElementById("imageModal")
+        .classList.remove("active");
+}
+        
+
         /* FONDO CINEMÁTICO DE PARTÍCULAS */
         function initParticleBackground() {
             const canvas = document.getElementById("particle-canvas"); 
@@ -370,5 +464,12 @@
             loop();
         }
     </script>
+
+
+    <!-- VISOR FULLSCREEN -->
+<div id="imageModal" class="image-modal">
+    <button class="close-modal" id="closeModal">✕</button>
+    <img id="modalImage" src="" alt="">
+</div>
 </body>
 </html>
