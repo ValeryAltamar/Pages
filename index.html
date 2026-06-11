@@ -185,7 +185,6 @@
             30% { opacity: 0.3; }
             100% { transform: scale(1) rotateY(0deg) translateZ(0); opacity: 1; filter: blur(0px); }
         }
-        
     </style>
 </head>
 <body>
@@ -228,18 +227,15 @@
     <script>
         // DATA SET ORIGINAL PRESERVADO
         const ASSET_PIPELINE = [
-            { title: "UNA NUEVA MIRADA", img: "1.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "DESTACADO DE HOY", img: "2.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "ALGO PARA DESCUBRIR", img: "3.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "LO QUE ESTÁ SONANDO", img: "4.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "TENDENCIA POPULAR", img: "5.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "EXPERIENCIA ÚNICA", img: "6.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "VALE UN VISTAZO", img: "7.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "LO MÁS COMENTADO", img: "8.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "MOMENTO DESTACADO", img: "9.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "ENTRE LOS FAVORITOS", img: "10.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-            { title: "ENTRE LOS FAVORITOS", img: "11.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
-
+            { title: "UNA HISTORIA MÁS", img: "1.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "CONTENIDO DESTACADO", img: "2.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "LO MÁS VISTO", img: "3.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "IMPERDIBLE HOY", img: "4.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "ALGO INTERESANTE", img: "5.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "PARA EXPLORAR", img: "6.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "NUEVO EN TENDENCIA", img: "7.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "MOMENTO VIRAL", img: "8.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
+            { title: "EN EL RADAR", img: "9.JPG", user: "VALERY", avatar: "1.JPG", url: "https://myaurahub.github.io/MY/" },
         ];
 
         let currentIndex = 0;
@@ -250,8 +246,6 @@
             initParticleBackground();
             buildPagination();
             renderCard(currentIndex);
-
-});
             
             // Ciclo infinito automatizado cada 5 segundos
             setInterval(nextCardSequence, 3000);
@@ -294,11 +288,12 @@
                     </div>
                 </div>
             `;
-            card.style.cursor = "pointer";
 
-    card.addEventListener("click", () => {
-    openImageModal(data.img);
-});
+             card.style.cursor = "pointer";
+
+      card.addEventListener("click", () => {
+        window.location.href = data.url;
+    });
 
     return card;
 }
@@ -340,21 +335,6 @@
                 document.getElementById("js-header-avatar").src = ASSET_PIPELINE[currentIndex].avatar;
             }, 850);
         }
-
-
-        function openImageModal(imageSrc) {
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
-
-    modalImage.src = imageSrc;
-    modal.classList.add("active");
-}
-
-      function closeImageModal() {
-       document.getElementById("imageModal")
-        .classList.remove("active");
-}
-        
 
         /* FONDO CINEMÁTICO DE PARTÍCULAS */
         function initParticleBackground() {
